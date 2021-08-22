@@ -42,6 +42,10 @@ class ViewController: UIViewController {
     
     // MARK: - IB Actions
     @IBAction func changingColorMutableView() {
+        valueRedSlider.text = String(format: "%.2f", redSlider.value)
+        valueGreenSlider.text = String(format: "%.2f", greenSlider.value)
+        valueBlueSlider.text = String(format: "%.2f", blueSlider.value)
+        
         changeColor()
     }
 }
