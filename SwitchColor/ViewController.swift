@@ -24,6 +24,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         mutableView.layer.cornerRadius = 10
+        mutableView.backgroundColor = UIColor(
+            displayP3Red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
     }
     
     // MARK: - IB Actions
