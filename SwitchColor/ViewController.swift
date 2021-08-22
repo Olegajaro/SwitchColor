@@ -19,9 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    // MARK: - Life Cicles Methods
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        redSlider.value = 0.05
+        greenSlider.value = 0.27
+        blueSlider.value = 0.49
+        
+        valueRedSlider.text = String(format: "%.2f", redSlider.value)
+        valueGreenSlider.text = String(format: "%.2f", greenSlider.value)
+        valueBlueSlider.text = String(format: "%.2f", blueSlider.value)
         
         mutableView.layer.cornerRadius = 10
         mutableView.backgroundColor = UIColor(
@@ -33,21 +41,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - IB Actions
-    @IBAction func changingRedAlphaComponent() {
-        valueRedSlider.text = String(format: "%.2f", redSlider.value)
-    
-        changeColor()
-    }
-    
-    @IBAction func changingGreenAlphaComponent() {
-        valueGreenSlider.text = String(format: "%.2f", greenSlider.value)
-        
-        changeColor()
-    }
-    
-    @IBAction func changingBlueAlphaComponent(_ sender: Any) {
-        valueBlueSlider.text = String(format: "%.2f", blueSlider.value)
-        
+    @IBAction func changingColorMutableView() {
         changeColor()
     }
 }
