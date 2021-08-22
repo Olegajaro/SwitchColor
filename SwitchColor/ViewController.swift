@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     // MARK: - IB Actions
     @IBAction func changingRedAlphaComponent() {
         valueRedSlider.text = String(format: "%.2f", redSlider.value)
-        
+    
         changeColor()
     }
     
@@ -51,7 +51,9 @@ extension ViewController {
     private func changeColor() {
         mutableView.backgroundColor = UIColor(
             displayP3Red: CGFloat(redSlider.value),
-            green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value),
-            alpha: 1)
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1
+        )
     }
 }
