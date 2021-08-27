@@ -27,9 +27,7 @@ class ViewController: UIViewController {
         greenSlider.value = 0.27
         blueSlider.value = 0.49
         
-        valueRedSlider.text = String(format: "%.2f", redSlider.value)
-        valueGreenSlider.text = String(format: "%.2f", greenSlider.value)
-        valueBlueSlider.text = String(format: "%.2f", blueSlider.value)
+        setValue(for: valueRedSlider, valueGreenSlider, valueBlueSlider)
         
         mutableView.layer.cornerRadius = 10
         
@@ -40,10 +38,15 @@ class ViewController: UIViewController {
     
     @IBAction func rgbSlider(_ sender: UISlider) {
         changeColor()
-        
-        valueRedSlider.text = String(format: "%.2f", redSlider.value)
-        valueGreenSlider.text = String(format: "%.2f", greenSlider.value)
-        valueBlueSlider.text = String(format: "%.2f", blueSlider.value)
+    // теперь в данном методе мы обновляем значение того, слайдера, который используем
+        switch sender {
+        case redSlider:
+            valueRedSlider.text = string(from: redSlider)
+        case greenSlider:
+            valueGreenSlider.text =  string(from: greenSlider)
+        default:
+            valueBlueSlider.text = string(from: blueSlider)
+        }
     }
     
     // MARK: - Private Methods
@@ -53,6 +56,23 @@ class ViewController: UIViewController {
             green: CGFloat(greenSlider.value),
             blue: CGFloat(blueSlider.value),
             alpha: 1)
+    }
+    
+    private func setValue(for labels: UILabel...) {
+        labels.forEach { label in
+            switch label {
+            case valueRedSlider:
+                valueRedSlider.text = string(from: redSlider)
+            case valueGreenSlider:
+                valueGreenSlider.text = string(from: greenSlider)
+            default:
+                valueBlueSlider.text = string(from: blueSlider)
+            }
+        }
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
 
