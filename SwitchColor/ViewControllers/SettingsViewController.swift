@@ -23,13 +23,17 @@ class SettingsViewController: UIViewController {
     @IBOutlet var valueGreenTF: UITextField!
     @IBOutlet var valueBlueTF: UITextField!
     
+    var redComponent: CGFloat!
+    var greenComponent: CGFloat!
+    var blueComponent: CGFloat!
+    
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redSlider.value = 0.05
-        greenSlider.value = 0.27
-        blueSlider.value = 0.49
+        redSlider.value = Float(redComponent)
+        greenSlider.value = Float(greenComponent)
+        blueSlider.value = Float(blueComponent)
         
         setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
         setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
