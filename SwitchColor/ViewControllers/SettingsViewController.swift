@@ -11,13 +11,17 @@ class SettingsViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var mutableView: UIView!
     
-    @IBOutlet var valueRedSlider: UILabel!
-    @IBOutlet var valueGreenSlider: UILabel!
-    @IBOutlet var valueBlueSlider: UILabel!
+    @IBOutlet var valueRedLabel: UILabel!
+    @IBOutlet var valueGreenLabel: UILabel!
+    @IBOutlet var valueBlueLabel: UILabel!
     
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
+    
+    @IBOutlet var valueRedTF: UITextField!
+    @IBOutlet var valueGreenTF: UITextField!
+    @IBOutlet var valueBlueTF: UITextField!
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
@@ -27,7 +31,8 @@ class SettingsViewController: UIViewController {
         greenSlider.value = 0.27
         blueSlider.value = 0.49
         
-        setValue(for: valueRedSlider, valueGreenSlider, valueBlueSlider)
+        setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
+        setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
         
         mutableView.layer.cornerRadius = 10
         
@@ -41,11 +46,14 @@ class SettingsViewController: UIViewController {
     // теперь в данном методе мы обновляем значение того, слайдера, который используем
         switch sender {
         case redSlider:
-            valueRedSlider.text = string(from: redSlider)
+            valueRedLabel.text = string(from: redSlider)
+            valueRedTF.text = string(from: redSlider)
         case greenSlider:
-            valueGreenSlider.text =  string(from: greenSlider)
+            valueGreenLabel.text = string(from: greenSlider)
+            valueGreenTF.text = string(from: greenSlider)
         default:
-            valueBlueSlider.text = string(from: blueSlider)
+            valueBlueLabel.text = string(from: blueSlider)
+            valueBlueTF.text = string(from: blueSlider)
         }
     }
     
@@ -61,12 +69,25 @@ class SettingsViewController: UIViewController {
     private func setValue(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
-            case valueRedSlider:
-                valueRedSlider.text = string(from: redSlider)
-            case valueGreenSlider:
-                valueGreenSlider.text = string(from: greenSlider)
+            case valueRedLabel:
+                valueRedLabel.text = string(from: redSlider)
+            case valueGreenLabel:
+                valueGreenLabel.text = string(from: greenSlider)
             default:
-                valueBlueSlider.text = string(from: blueSlider)
+                valueBlueLabel.text = string(from: blueSlider)
+            }
+        }
+    }
+    
+    private func setValue(for textFields: UITextField...) {
+        textFields.forEach { textField in
+            switch textField {
+            case valueRedTF:
+                valueRedTF.text = string(from: redSlider)
+            case valueGreenTF:
+                valueGreenTF.text = string(from: greenSlider)
+            default:
+                valueBlueTF.text = string(from: blueSlider)
             }
         }
     }

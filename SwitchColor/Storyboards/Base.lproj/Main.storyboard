@@ -19,7 +19,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vh3-Jq-vGC">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="jPT-MI-ZuB">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="square.and.pencil" catalog="system" id="jPT-MI-ZuB">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="vwp-i2-wwW"/>
                             </connections>
@@ -157,7 +157,7 @@
                                     <constraint firstAttribute="width" secondItem="URb-KP-wrP" secondAttribute="height" multiplier="43:24" id="0pD-FV-ClV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -180,9 +180,12 @@
                         <outlet property="greenSlider" destination="moa-nj-ALv" id="UdZ-5Y-X3a"/>
                         <outlet property="mutableView" destination="uLZ-6q-hwY" id="Ioe-zn-1Gm"/>
                         <outlet property="redSlider" destination="Lsf-H2-oCY" id="Ucx-Ic-mpj"/>
-                        <outlet property="valueBlueSlider" destination="Xzv-Fo-cAV" id="U98-rg-bf9"/>
-                        <outlet property="valueGreenSlider" destination="CCv-zl-Qol" id="vMK-jp-YVC"/>
-                        <outlet property="valueRedSlider" destination="hTI-be-sHW" id="dkM-bl-MO7"/>
+                        <outlet property="valueBlueLabel" destination="Xzv-Fo-cAV" id="U98-rg-bf9"/>
+                        <outlet property="valueBlueTF" destination="muP-VK-vb8" id="WSV-HQ-HTA"/>
+                        <outlet property="valueGreenLabel" destination="CCv-zl-Qol" id="vMK-jp-YVC"/>
+                        <outlet property="valueGreenTF" destination="7up-rG-qpk" id="xtN-q5-PXh"/>
+                        <outlet property="valueRedLabel" destination="hTI-be-sHW" id="dkM-bl-MO7"/>
+                        <outlet property="valueRedTF" destination="rMM-6b-WGy" id="d9X-8K-fyz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -209,6 +212,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
