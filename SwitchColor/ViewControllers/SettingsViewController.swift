@@ -26,14 +26,15 @@ class SettingsViewController: UIViewController {
     var redComponent: CGFloat!
     var greenComponent: CGFloat!
     var blueComponent: CGFloat!
+    var delegate: SettingsViewControllerDelegate!
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redSlider.value = Float(redComponent)
-        greenSlider.value = Float(greenComponent)
-        blueSlider.value = Float(blueComponent)
+        redSlider.value = Float(redComponent ?? 1)
+        greenSlider.value = Float(greenComponent ?? 1)
+        blueSlider.value = Float(blueComponent ?? 1)
         
         setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
         setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
@@ -60,6 +61,16 @@ class SettingsViewController: UIViewController {
             valueBlueTF.text = string(from: blueSlider)
         }
     }
+    
+    @IBAction func doneButtonPressed() {
+        delegate.setCurrentColor(
+            for: CGFloat(redSlider.value),
+            for: CGFloat(greenSlider.value),
+            and: CGFloat(blueSlider.value)
+        )
+        dismiss(animated: true)
+    }
+    
     
     // MARK: - Private Methods
     private func changeColor() {
