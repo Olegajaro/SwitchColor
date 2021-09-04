@@ -39,6 +39,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1054DCB426E3918300B38505 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				10F0B21E26D00CCF00C57388 /* Main.storyboard */,
+				10F0B22326D00CCF00C57388 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		1054DCB526E391B200B38505 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				10F0B21826D00CCF00C57388 /* AppDelegate.swift */,
+				10F0B21A26D00CCF00C57388 /* SceneDelegate.swift */,
+				10F0B22626D00CCF00C57388 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1054DCB626E391C400B38505 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10F0B22126D00CCF00C57388 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1054DCB726E391CE00B38505 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				10F0B21C26D00CCF00C57388 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		10F0B20C26D00CCF00C57388 = {
 			isa = PBXGroup;
 			children = (
@@ -59,13 +94,10 @@
 		10F0B21726D00CCF00C57388 /* SwitchColor */ = {
 			isa = PBXGroup;
 			children = (
-				10F0B21826D00CCF00C57388 /* AppDelegate.swift */,
-				10F0B21A26D00CCF00C57388 /* SceneDelegate.swift */,
-				10F0B21C26D00CCF00C57388 /* ViewController.swift */,
-				10F0B21E26D00CCF00C57388 /* Main.storyboard */,
-				10F0B22126D00CCF00C57388 /* Assets.xcassets */,
-				10F0B22326D00CCF00C57388 /* LaunchScreen.storyboard */,
-				10F0B22626D00CCF00C57388 /* Info.plist */,
+				1054DCB726E391CE00B38505 /* ViewControllers */,
+				1054DCB426E3918300B38505 /* Storyboards */,
+				1054DCB626E391C400B38505 /* Resources */,
+				1054DCB526E391B200B38505 /* App */,
 			);
 			path = SwitchColor;
 			sourceTree = "<group>";
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QGLMKQL94J;
-				INFOPLIST_FILE = SwitchColor/Info.plist;
+				INFOPLIST_FILE = SwitchColor/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QGLMKQL94J;
-				INFOPLIST_FILE = SwitchColor/Info.plist;
+				INFOPLIST_FILE = SwitchColor/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
