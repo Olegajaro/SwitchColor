@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  SwitchColor
 //
 //  Created by Олег Федоров on 20.08.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     // MARK: - IB Outlets
     @IBOutlet var mutableView: UIView!
     
