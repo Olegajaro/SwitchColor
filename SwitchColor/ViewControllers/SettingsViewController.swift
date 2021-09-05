@@ -23,18 +23,18 @@ class SettingsViewController: UIViewController {
     @IBOutlet var valueGreenTF: UITextField!
     @IBOutlet var valueBlueTF: UITextField!
     
-    var redComponent: CGFloat!
-    var greenComponent: CGFloat!
-    var blueComponent: CGFloat!
+    // MARK: - Public Properties
+    var color: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        redSlider.value = Float(redComponent ?? 1)
-        greenSlider.value = Float(greenComponent ?? 1)
-        blueSlider.value = Float(blueComponent ?? 1)
+        redSlider.value = Float(color.rgba.red)
+        greenSlider.value = Float(color.rgba.green)
+        blueSlider.value = Float(color.rgba.blue)
+
+        color = mutableView.backgroundColor
         
         setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
         setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func rgbSlider(_ sender: UISlider) {
         changeColor()
-    // теперь в данном методе мы обновляем значение того, слайдера, который используем
+    
         switch sender {
         case redSlider:
             valueRedLabel.text = string(from: redSlider)
@@ -64,13 +64,12 @@ class SettingsViewController: UIViewController {
     
     @IBAction func doneButtonPressed() {
         delegate.setCurrentColor(
-            for: CGFloat(redSlider.value),
-            for: CGFloat(greenSlider.value),
-            and: CGFloat(blueSlider.value)
+            redComponent: CGFloat(redSlider.value),
+            greenComponent: CGFloat(greenSlider.value),
+            blueComponent: CGFloat(blueSlider.value)
         )
         dismiss(animated: true)
     }
-    
     
     // MARK: - Private Methods
     private func changeColor() {
@@ -109,6 +108,54 @@ class SettingsViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SettingsViewController: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case valueRedTF:
+            valueGreenTF.becomeFirstResponder()
+        case valueGreenTF:
+            valueBlueTF.becomeFirstResponder()
+        default:
+            valueRedTF.becomeFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case valueRedTF:
+            redSlider.value = Float(valueRedTF.text ?? "0") ?? 0
+            valueRedLabel.text = string(from: redSlider)
+        case valueGreenTF:
+            greenSlider.value = Float(valueGreenTF.text ?? "0") ?? 0
+            valueGreenLabel.text = string(from: greenSlider)
+        default:
+            blueSlider.value = Float(valueBlueTF.text ?? "0") ?? 0
+            valueBlueLabel.text = string(from: blueSlider)
+        }
+        
+        changeColor()
+    }
+}
+
+extension UIColor {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        
+        return (red, green, blue, alpha)
     }
 }
 

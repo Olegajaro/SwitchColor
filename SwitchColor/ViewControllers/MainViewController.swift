@@ -9,15 +9,17 @@ import UIKit
 
 protocol SettingsViewControllerDelegate {
     func setCurrentColor(
-        for redComponent: CGFloat,
-        for greenComponent: CGFloat,
-        and blueComponent: CGFloat
+        redComponent: CGFloat,
+        greenComponent: CGFloat,
+        blueComponent: CGFloat
         )
 }
 
 class MainViewController: UIViewController {
     
     @IBOutlet var mainView: UIView!
+    
+    var color: UIColor!
     
     var redComponent: CGFloat!
     var greenComponent: CGFloat!
@@ -26,29 +28,22 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.backgroundColor = UIColor(
-            red: redComponent ?? 1,
-            green: greenComponent ?? 1,
-            blue: blueComponent ?? 1,
-            alpha: 1
-        )
+        mainView.backgroundColor = color ?? .red
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
-
-        settingsVC.redComponent = redComponent
-        settingsVC.greenComponent = greenComponent
-        settingsVC.blueComponent = blueComponent
+        
+        settingsVC.color = mainView.backgroundColor
         settingsVC.delegate = self
     }
 }
 
 extension MainViewController: SettingsViewControllerDelegate {
     func setCurrentColor(
-        for redComponent: CGFloat,
-        for greenComponent: CGFloat,
-        and blueComponent: CGFloat
+        redComponent: CGFloat,
+        greenComponent: CGFloat,
+        blueComponent: CGFloat
     ) {
         mainView.backgroundColor = UIColor(
             red: redComponent,
