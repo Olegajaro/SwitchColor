@@ -20,11 +20,7 @@ class MainViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     
     var color: UIColor!
-    
-    var redComponent: CGFloat!
-    var greenComponent: CGFloat!
-    var blueComponent: CGFloat!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
