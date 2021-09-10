@@ -8,44 +8,22 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate {
-    func setCurrentColor(
-        redComponent: CGFloat,
-        greenComponent: CGFloat,
-        blueComponent: CGFloat
-        )
+    func setCurrentColor(_ color: UIColor)
 }
 
 class MainViewController: UIViewController {
     
-    @IBOutlet var mainView: UIView!
-    
-    var color: UIColor!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        mainView.backgroundColor = color ?? .red
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
         
-        settingsVC.color = mainView.backgroundColor
+        settingsVC.color = view.backgroundColor
         settingsVC.delegate = self
     }
 }
 
 extension MainViewController: SettingsViewControllerDelegate {
-    func setCurrentColor(
-        redComponent: CGFloat,
-        greenComponent: CGFloat,
-        blueComponent: CGFloat
-    ) {
-        mainView.backgroundColor = UIColor(
-            red: redComponent,
-            green: greenComponent,
-            blue: blueComponent,
-            alpha: 1
-        )
+    func setCurrentColor(_ color: UIColor) {
+        view.backgroundColor = color
     }
 }
+

@@ -63,11 +63,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        delegate.setCurrentColor(
-            redComponent: CGFloat(redSlider.value),
-            greenComponent: CGFloat(greenSlider.value),
-            blueComponent: CGFloat(blueSlider.value)
-        )
+        delegate.setCurrentColor(mutableView.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
