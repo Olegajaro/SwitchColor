@@ -30,16 +30,14 @@ class SettingsViewController: UIViewController {
     // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        redSlider.value = Float(color.rgba.red)
-        greenSlider.value = Float(color.rgba.green)
-        blueSlider.value = Float(color.rgba.blue)
-
-        color = mutableView.backgroundColor
-        
-        setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
-        setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
         
         mutableView.layer.cornerRadius = 10
+
+        mutableView.backgroundColor = color
+        
+        setSliders()
+        setValue(for: valueRedLabel, valueGreenLabel, valueBlueLabel)
+        setValue(for: valueRedTF, valueGreenTF, valueBlueTF)
         
         changeColor()
     }
@@ -102,6 +100,14 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    private func setSliders() {
+        let ciColor = CIColor(color: color)
+        
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
+    }
+    
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
@@ -143,17 +149,6 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
-extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        return (red, green, blue, alpha)
-    }
-}
 
 
 
